@@ -6,3 +6,22 @@
 //
 
 import Foundation
+
+struct SharedAccount {
+
+    @UserDefault("currentUsername", defaultValue: nil)
+    static var username:String?
+    
+    @UserDefault("currentToken", defaultValue: nil)
+    static var token:String?
+    
+    
+    static var isLoggedIn:Bool {
+        return username != nil && token != nil
+    }
+   
+    static func clearAccount() {
+        username = nil
+        token = nil
+    }
+}
